@@ -1,0 +1,1 @@
+-------	<p>We are dedicated to sending you only the best news and articles!</p>
