@@ -1,4 +1,5 @@
 site_name: CyberInsecurities
+site_url: https://garysuyemoto.com/blog/
 theme:
   name: material
   features:

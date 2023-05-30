@@ -1,6 +1,6 @@
 ---
 title: juice and goats
-slug: web-site-pen-testing
+slug: juice-and-goats
 date: 2023-05-26
 categories:
   - SQL Injection
