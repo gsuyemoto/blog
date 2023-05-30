@@ -21,7 +21,7 @@ categories:
 
 For those who don't know, the [OWASP Juice Shop]{target=_blank} is a ~~handy~~ **modern full stack web app** with some of the top known vulnerabilities baked in, thus allowing you to get your web pen testing juices flowing (pun intended)!
 
-I set up a local [Ubuntu VM] and installed the Juice Shop manually using NodeJS and NPM.
+I set up a local Ubuntu VM and installed the Juice Shop manually using NodeJS and NPM.
 
 <!-- more -->
 

@@ -6,11 +6,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://garysuyemoto.com/blog/2023/05/25/dl580-gen5/</loc>
-         <lastmod>2023-05-30</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://garysuyemoto.com/blog/2023/05/26/juice-and-goats/</loc>
          <lastmod>2023-05-30</lastmod>
          <changefreq>daily</changefreq>
@@ -21,27 +16,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://garysuyemoto.com/blog/category/web-app-pen-testing/</loc>
-         <lastmod>2023-05-30</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://garysuyemoto.com/blog/category/sql-injection/</loc>
          <lastmod>2023-05-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://garysuyemoto.com/blog/category/bare-metal-virtual/</loc>
-         <lastmod>2023-05-30</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://garysuyemoto.com/blog/category/lab/</loc>
-         <lastmod>2023-05-30</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://garysuyemoto.com/blog/category/proxmox/</loc>
+         <loc>https://garysuyemoto.com/blog/category/web-app-pen-testing/</loc>
          <lastmod>2023-05-30</lastmod>
          <changefreq>daily</changefreq>
     </url>

@@ -18,6 +18,7 @@ plugins:
   - meta
   - blog:
       blog_dir: . 
+      post_readtime: false
   - search
   - tags
 nav:

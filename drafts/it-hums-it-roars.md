@@ -1,6 +1,6 @@
 ---
 title: noisy drone in my office?
-slug: dl580-gen5
+slug: it-hums-it-roars
 date: 2023-05-25
 categories:
   - ProxMox
