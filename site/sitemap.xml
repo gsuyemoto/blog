@@ -2,27 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://garysuyemoto.com/blog/</loc>
-         <lastmod>2023-05-30</lastmod>
+         <lastmod>2023-05-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://garysuyemoto.com/blog/2023/05/26/juice-and-goats/</loc>
-         <lastmod>2023-05-30</lastmod>
+         <lastmod>2023-05-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://garysuyemoto.com/blog/2023/05/31/ssh-attacks/</loc>
+         <lastmod>2023-05-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://garysuyemoto.com/blog/archive/2023/</loc>
-         <lastmod>2023-05-30</lastmod>
+         <lastmod>2023-05-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://garysuyemoto.com/blog/category/blue-team/</loc>
+         <lastmod>2023-05-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://garysuyemoto.com/blog/category/sql-injection/</loc>
-         <lastmod>2023-05-30</lastmod>
+         <lastmod>2023-05-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://garysuyemoto.com/blog/category/web-app-pen-testing/</loc>
-         <lastmod>2023-05-30</lastmod>
+         <lastmod>2023-05-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
