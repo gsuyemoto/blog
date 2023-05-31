@@ -17,6 +17,10 @@ Obviously, this piqued my curiosity and I spent the next hour or so picking thro
 cat auth.log.1 auth.log.3 auth.log.4 | grep "Invalid user" | wc -l 
 56683
 ````
+````bash title="Better Checking total Invalid User attempts"
+ls auth.log.* | xargs grep "Invalid user" | wc -l 
+56683
+````
 
 !!! note 
     Those archived logs span from May 6 until May 31.
