@@ -21,6 +21,7 @@ plugins:
       post_readtime: false
   - search
   - tags
+  - mkdocs-video
 nav:
   - index.md
 markdown_extensions:
