@@ -1,13 +1,12 @@
 ---
-title: juice and goats
-slug: juice-and-goats
+title: web and goats part 1
+slug: web-and-goats-p1
 date: 2023-05-26
 categories:
   - SQL Injection
   - Web App Pen Testing
 ---
 
-  [OWASP Juice Shop]: https://owasp.org/www-project-juice-shop/
   [Ubuntu VM]: ./it-hums-it-roars.md
   [Juice Shop Github]: https://github.com/juice-shop/juice-shop#from-sources
   [Wapiti]: https://wapiti-scanner.github.io/
@@ -16,38 +15,30 @@ categories:
   [nikto]: https://github.com/sullo/nikto
   [OWASP WebGoat]: https://owasp.org/www-project-webgoat/
   [WebGoat Github]: https://github.com/WebGoat/WebGoat/releases
+  [OWASP ZAP]: https://owasp.org/www-project-zap
 
-# Juice shops and web goats
-
-For those who don't know, the [OWASP Juice Shop]{target=_blank} is a ~~handy~~ **modern full stack web app** with some of the top known vulnerabilities baked in, thus allowing you to get your web pen testing juices flowing (pun intended)!
-
-I set up a local Ubuntu VM and installed the Juice Shop manually using NodeJS and NPM.
+# Web Goats Part 1
+If you want to learn or practice your cybersecurity skills, especially against the top ten OWASP web vulnerabilities, then the [OWASP WebGoat] is a great tool. Allowing for you to practice a range of different techniques that would be otherwise be time consuming to set up in a lab setting, such as fuzzing and SQL Injection, WebGoat also provides great insight and guidance.
 
 <!-- more -->
 
-!!! info "Using NPM"
-    Go to the [Juice Shop Github]{target=_blank} for the full installation instructions.
-    Here is the what I did (need NodeJS & NPM installed)
-    ```` bash
-    git clone https://github.com/juice-shop/juice-shop.git --depth 1
-    cd juice-shop
-    npm install
-    npm start
+!!! info "Get the WebGoat Distro"
+    Go to the [WebGoat Github]{target=_blank} for the latest distro. Just download it and run it:
+    ````java
+    java -jar webgoat.jar
     ````
 
-After getting the Juice Shop server set up, I set up an additional VM with Kali Linux and then provided them both with only a single network interface, a local link, to talk to each other.
+Default server settings serve the WebGoat on localhost (127.0.0.1) on port 8080. Just open a browser and go to the URL:
+````
+https://localhost:8080/WebGoat
+````
 
 !!! warning
-    It's not a good idea to set up the Juice Shop and provide access to the WWW to the server...
+    It's not a good idea to set up WebGoat and provide it access to the WAN/internet and therefore OTHERS to access your WebGoat.
+    
+Some of the lessons require some kind of proxy and the recommendation is for [OWASP ZAP] or [BurpSuite]. In many case, I found that you could just use the browser's dev tools. I used all of the choices, ZAP, Burp and the dev tools. Burp requires that you get a trial license for scanning. ZAP was incredibly handy for fuzzing, albeit in many cases it was just brute force.
 
-On the Kali box, I tried the following security scanning apps to get an general idea of possible exploits.
-
-### Scanning the Juice Store
-
-- [Wapiti]{target=_blank}: Found nothing
-- [SkipFish]{target=_blank}: Decent amount of hidden directories and more. Nice HTML report. Crashed web server. Found redirect flag for Juice Store.
-- [BurpSuite]{target=_blank}: Have to request a trial for 30 days (don't want to pay $500 for pro in order to scan). Still waiting on trial.
-- [nikto]{target=_blank}: Very heavy on the certificates found in various paths. Need to check if output a nicer report format. Found WordPress directories that others missed.
+OK. So, I skipped ahead in the lessons and went straight for the SQL Injection section...
 
 ### SQL Injection
 
