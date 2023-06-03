@@ -8,7 +8,7 @@ date: 2023-06-03
 
 # Cybersecurity Jargon
 
-I just recently spoke to a pleasant tech recruiter and in the conversation she mentioned that I should take the opportunity to express any tech jargon that I would know related to the position I was interested in. With this, out of curiosity, I decided to make a quick comparison.
+I just recently spoke to a pleasant tech recruiter and in the conversation she mentioned that I should take the opportunity to express any tech jargon that I would know related to the position I was interested in. This, I thought, was an interesting opportunity to see what ChatGPT had to say about this...
 
 <!-- more -->
 
@@ -46,9 +46,9 @@ Logging into ChatGPT, I then queried it for cybersecurity jargon and here were t
 > 
 > 15. Ransomware: A type of malicious software that encrypts a victim's files or locks their system, demanding a ransom payment in exchange for restoring access.
  
-These are just a few examples of cybersecurity jargon, but the field is vast, and there are many more terms and concepts to explore.
+Ha! Not that impressive. I mean, they ARE cybersecurity terminololgy, but very basic and very general. Probably great for a someone who doesn't have much knowledge of cybersecurity I guess. I'm pretty sure throwing these out won't impress too many people in an interview though.
 
-Ha! Not that impressive. I mean, they ARE cybersecurity terminololgy, but very basic and very general. Let's try another query:
+Ok, I'm sure these results are just an indication of my bad query. Let's try another query, and let's be more specific:
 
 > As a web server operator, it is important to be aware of various cybersecurity vulnerabilities that can affect your web server. Here are some specific vulnerabilities to consider:
 > 
@@ -74,11 +74,11 @@ Ha! Not that impressive. I mean, they ARE cybersecurity terminololgy, but very b
 > 
 > Regularly updating and patching software, conducting security assessments, and following security best practices are crucial to minimize these vulnerabilities and maintain the security of your web server.
 
-Much, much better. Still, a bit lacking. Obviously, my ChatGPT skills need improvement, maybe everyone can benefit from brushing up on their '[prompt engineer]{target=_blank}' skills??
+ Much, much better. Still, a bit lacking. I think the best results will probably be related to some pretty specific querying. Or, very specific topics added into the query. Obviously, my ChatGPT skills need improvement, maybe everyone can benefit from brushing up on their '[prompt engineer]{target=_blank}' skills??
 
-The last result did provide a nice gem, number 10 is definitely a term I feel a lot of the general dev community might not be as familiar with and have the necessary awareness.
+The last result, number 10, was interesting as it definitely is jargon. I think many people might be aware of this type of vulnerability, but would not be familiar with the term or associate the term with the vulnerability.
 
-OK, so now I know it's best for me as a n00b prompt engineer (n00b is such an interesting term to me as a former military veteran who came across this a lot in the military and to see how much it is used in the civilian world, did it originate in the military and then cross over? the civilian world and cross into the military? anyways...) to just use the old fashion way and do some manual search from various open source materials available to me (online AND offline). I DO have a bit experience in aggregating data from various open sources.
+OK, so now I know it's best for me as a n00b prompt engineer (n00b is such an interesting term to me as a former military veteran who came across this a lot in the military and to see how much it is used in the civilian world, did it originate in the military and then cross over? the civilian world and cross into the military? anyways...) to just use the old fashion way and do some manual search from various open source materials available to me (online AND offline).
 
 As gleaned from various sources
 
