@@ -8,13 +8,11 @@
       
       
       
-        <link rel="canonical" href="https://garysuyemoto.com/blog/2023/06/02/web-and-goats-p2/">
+        <link rel="canonical" href="https://garysuyemoto.com/blog/2023/06/03/cybersecurity-jargon/">
       
       
-        <link rel="prev" href="../../../05/31/ssh-attacks/">
+        <link rel="prev" href="../../02/web-and-goats-p2/">
       
-      
-        <link rel="next" href="../../03/cybersecurity-jargon/">
       
       
         
@@ -25,7 +23,7 @@
     
     
       
-        <title>web and goats part 2 - CyberInsecurities</title>
+        <title>Cybersecurity Jargon - CyberInsecurities</title>
       
     
     
@@ -71,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#web-goats-part-2" class="md-skip">
+        <a href="#cybersecurity-jargon" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              web and goats part 2
+              Cybersecurity Jargon
             
           </span>
         </div>
@@ -482,10 +480,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#broken-access-control" class="md-nav__link">
+  <a href="#terms-from-job-postings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Broken Access Control
+        Terms From Job Postings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terms-from-lethal-skills-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terms From Lethal Skills site:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terms-from-the-hacker-playbook-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terms From The Hacker Playbook 3:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terms-from-other" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terms from Other:
       
     </span>
   </a>
@@ -528,20 +559,9 @@
               <li class="md-nav__item">
                 <div class="md-nav__link">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                  <time datetime="2023-06-02 00:00:00" class="md-ellipsis">June 2, 2023</time>
+                  <time datetime="2023-06-03 00:00:00" class="md-ellipsis">June 3, 2023</time>
                 </div>
               </li>
-              
-                <li class="md-nav__item">
-                  <div class="md-nav__link">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3H9m3 2 4 13 3-1-4-13-3 1M5 5v13h3V5H5M3 19v2h18v-2H3Z"/></svg>
-                    <span class="md-ellipsis">
-                      in
-                      
-                        <a href="../../../../category/broken-access-control/">Broken Access Control</a>, 
-                        <a href="../../../../category/web-app-pen-testing/">Web App Pen Testing</a></span>
-                  </div>
-                </li>
               
               
             </ul>
@@ -561,36 +581,121 @@
 
 
 
-<div><h1 id="web-goats-part-2">Web Goats Part 2</h1>
-<p>Ok, so this is part 2 of the my adventures with WebGoat. Please check out <a href="../web-and-goats-p1">Part 1</a> if you want to see my solutions for the SQL Injection part of WebGoat. Spoiler alert though, that article covers most of the solutions I came up for the SQL Injection section. I will be going over my solutions for some of the Broken Access Control section of WebGoat here. I like to have a historical document for these exercises as a nice to have for future reference.</p>
-<p>If you want to learn or practice your cybersecurity skills, especially against the top ten OWASP web vulnerabilities, then the <a href="https://owasp.org/www-project-webgoat/">OWASP WebGoat</a> is a great tool. Allowing for you to practice a range of different techniques that would be otherwise be time consuming to set up in a lab setting, such as fuzzing and SQL Injection, WebGoat also provides great insight and guidance.</p>
+<div><h1 id="cybersecurity-jargon">Cybersecurity Jargon</h1>
+<p>I just recently spoke to a pleasant tech recruiter and in the conversation she mentioned that I should take the opportunity to express any tech jargon that I would know related to the position I was interested in. With this, out of curiosity, I decided to make a quick comparison.</p>
 <!-- more -->
 
-<div class="admonition info">
-<p class="admonition-title">Get the WebGoat Distro</p>
-<p>Go to the <a href="https://github.com/WebGoat/WebGoat/releases" target="_blank">WebGoat Github</a> for the latest distro. Just download it and run it:
-</p><div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">java</span><span class="w"> </span><span class="o">-</span><span class="n">jar</span><span class="w"> </span><span class="n">webgoat</span><span class="p">.</span><span class="na">jar</span>
-</span></code></pre></div>
-</div>
-<p>Default server settings serve the WebGoat on localhost (127.0.0.1) on port 8080. Just open a browser and go to the URL:
-</p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>https://localhost:8080/WebGoat
-</span></code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>It's not a good idea to set up WebGoat and provide it access to the WAN/internet and therefore OTHERS to access your WebGoat.</p>
-</div>
-<p>Some of the lessons require some kind of proxy and the recommendation is for <a href="https://owasp.org/www-project-zap">OWASP ZAP</a> or <a href="https://portswigger.net/burp/communitydownload">BurpSuite</a>. In many case, I found that you could just use the browser's dev tools. I used all of the choices, ZAP, Burp and the dev tools. Burp requires that you get a trial license for scanning. ZAP was incredibly handy for fuzzing, albeit in many cases it was just brute force.</p>
-<h3 id="broken-access-control">Broken Access Control</h3>
-<p>I found challenges 2-4 pretty straightforward. Challenge 5 was a bit more involved and for me, involved use of ZAP in order to fuzz the answer.</p>
-<p>From the previous lessons, it was discovered that in order to obtain your profile data is was necessary to make the following HTTP call:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>GET http://localhost:8080/WebGoat/IDOR/profile/userid HTTP/1.1
-</span></code></pre></div>
-<p>With <em>userid</em> being your profile id number ascertained in previous challenges. Using ZAP, I decided that I would just fuzz around my profile id (before and after) and see if another user's profile came up:</p>
-<p><div class="video-container"><iframe src="../../../../assets/videos/fuzzing-other-users-profile.webm" style="position:relative;width:100%;height:22.172vw" frameborder="0" allowfullscreen alt="type:video"></iframe></div></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The fuzzing capability provided in ZAP is pretty cool, but it doesn't seem to provide you with a way to script it to stop on a desired response from the server you are fuzzing.</p>
-</div></div>
+<p>Logging into ChatGPT, I then queried it for cybersecurity jargon and here were the results:</p>
+<blockquote>
+<p>Certainly! Here's a list of cybersecurity jargon along with brief descriptions for each term:</p>
+<ol>
+<li>
+<p>Firewall: A network security device that monitors and controls incoming and outgoing network traffic based on predetermined security rules.</p>
+</li>
+<li>
+<p>Malware: Short for malicious software, it refers to any software designed to harm or exploit computer systems, including viruses, worms, ransomware, and spyware.</p>
+</li>
+<li>
+<p>Phishing: A cyber attack where attackers pose as legitimate entities to trick individuals into revealing sensitive information, such as passwords, credit card numbers, or social security numbers.</p>
+</li>
+<li>
+<p>Encryption: The process of converting information into a code to prevent unauthorized access. Encryption ensures that data remains secure even if intercepted or accessed by unauthorized individuals.</p>
+</li>
+<li>
+<p>Intrusion Detection System (IDS): A system that monitors network traffic for suspicious activities or behaviors that may indicate a cyber attack or unauthorized access attempts.</p>
+</li>
+<li>
+<p>Denial-of-Service (DoS) attack: An attack aimed at rendering a computer system, network, or website unavailable by overwhelming it with a flood of illegitimate requests or excessive traffic.</p>
+</li>
+<li>
+<p>Vulnerability: A weakness or flaw in a computer system or software that can be exploited by attackers to gain unauthorized access, execute malicious code, or compromise the system's integrity.</p>
+</li>
+<li>
+<p>Two-Factor Authentication (2FA): A security mechanism that requires users to provide two different types of identification before accessing a system or account, typically combining a password with a unique verification code or biometric factor.</p>
+</li>
+<li>
+<p>Zero-day exploit: A cyber attack that takes advantage of a previously unknown vulnerability in software or hardware before a patch or fix is available.</p>
+</li>
+<li>
+<p>Social Engineering: The use of psychological manipulation techniques to deceive individuals into divulging confidential information or performing actions that may compromise security.</p>
+</li>
+<li>
+<p>Penetration Testing: Also known as ethical hacking, it involves simulating a cyber attack on a computer system or network to identify vulnerabilities and weaknesses in order to enhance security measures.</p>
+</li>
+<li>
+<p>Patch: A software update or fix released by developers to address vulnerabilities, bugs, or other security issues found in software or operating systems.</p>
+</li>
+<li>
+<p>VPN (Virtual Private Network): A secure network connection that allows users to access the internet or a private network securely by encrypting their connection and routing it through a remote server.</p>
+</li>
+<li>
+<p>Brute Force Attack: An automated technique that systematically tries all possible combinations of passwords or encryption keys until the correct one is found.</p>
+</li>
+<li>
+<p>Ransomware: A type of malicious software that encrypts a victim's files or locks their system, demanding a ransom payment in exchange for restoring access.</p>
+</li>
+</ol>
+</blockquote>
+<p>These are just a few examples of cybersecurity jargon, but the field is vast, and there are many more terms and concepts to explore.</p>
+<p>Ha! Not that impressive. I mean, they ARE cybersecurity terminololgy, but very basic and very general. Let's try another query:</p>
+<blockquote>
+<p>As a web server operator, it is important to be aware of various cybersecurity vulnerabilities that can affect your web server. Here are some specific vulnerabilities to consider:</p>
+<ol>
+<li>
+<p>Server Misconfiguration: Improperly configured web servers can lead to security vulnerabilities, such as open directories, default or weak passwords, unnecessary services or ports left open, or outdated software versions. Regularly review and update server configurations to ensure they align with security best practices.</p>
+</li>
+<li>
+<p>Cross-Site Scripting (XSS): XSS vulnerabilities allow attackers to inject malicious scripts into web pages, potentially leading to unauthorized access, data theft, or session hijacking. Employ input validation and output encoding to prevent XSS attacks.</p>
+</li>
+<li>
+<p>SQL Injection: SQL injection occurs when an attacker is able to insert malicious SQL code into a query, manipulating the database or obtaining unauthorized access to data. Implement proper input validation and parameterized queries to prevent SQL injection attacks.</p>
+</li>
+<li>
+<p>Server-Side Request Forgery (SSRF): SSRF vulnerabilities enable attackers to make requests from the server to internal resources or external systems, potentially bypassing firewalls and accessing sensitive information. Validate and sanitize user-supplied URLs and restrict access to internal resources.</p>
+</li>
+<li>
+<p>Remote File Inclusion (RFI) and Local File Inclusion (LFI): RFI and LFI vulnerabilities allow attackers to include and execute remote or local files on the web server, leading to unauthorized access, data disclosure, or remote code execution. Avoid including user-supplied input in file paths and ensure proper access controls.</p>
+</li>
+<li>
+<p>Denial-of-Service (DoS) Attacks: DoS attacks aim to overwhelm the server's resources, rendering it inaccessible to legitimate users. Implement measures such as rate limiting, traffic filtering, and load balancing to mitigate DoS attacks.</p>
+</li>
+<li>
+<p>Brute Force Attacks: Brute force attacks involve attempting various username and password combinations to gain unauthorized access to the server. Enforce strong password policies, implement account lockouts, and consider multi-factor authentication to protect against brute force attacks.</p>
+</li>
+<li>
+<p>File Upload Vulnerabilities: Insecure file upload functionality can lead to the execution of malicious code on the server or the dissemination of malicious files. Validate file types, restrict file permissions, and consider server-side scanning of uploaded files.</p>
+</li>
+<li>
+<p>Server-side Code Injection: Server-side code injection vulnerabilities occur when untrusted input is executed on the server, allowing attackers to run arbitrary code. Ensure proper input validation and implement whitelisting for input values.</p>
+</li>
+<li>
+<p>Insecure Direct Object References (IDOR): IDOR vulnerabilities arise when internal objects or resources are directly referenced in URLs, allowing attackers to access unauthorized information. Implement access controls and enforce proper authorization checks.</p>
+</li>
+</ol>
+<p>Regularly updating and patching software, conducting security assessments, and following security best practices are crucial to minimize these vulnerabilities and maintain the security of your web server.</p>
+</blockquote>
+<p>Much, much better. Still, a bit lacking. Obviously, my ChatGPT skills need improvement, maybe everyone can benefit from brushing up on their '<a href="https://www.axios.com/2023/02/22/chatgpt-prompt-engineers-ai-job" target="_blank">prompt engineer</a>' skills??</p>
+<p>The last result did provide a nice gem, number 10 is definitely a term I feel a lot of the general dev community might not be as familiar with and have the necessary awareness.</p>
+<p>OK, so now I know it's best for me as a n00b prompt engineer (n00b is such an interesting term to me as a former military veteran who came across this a lot in the military and to see how much it is used in the civilian world, did it originate in the military and then cross over? the civilian world and cross into the military? anyways...) to just use the old fashion way and do some manual search from various open source materials available to me (online AND offline). I DO have a bit experience in aggregating data from various open sources.</p>
+<p>As gleaned from various sources</p>
+<h3 id="terms-from-job-postings">Terms From Job Postings</h3>
+<p>Thanks to <a href="https://www.blacklanternsecurity.com/careers.html">Black Lantern</a>.</p>
+<p><strong>Knowledge of:</strong> XSS, XXE, SQL Injection, Deserialization Attacks, File Inclusion/Path Traversal Attacks, Server-side Request Forgery, Remote Execution Flaws, Server Configuration Flaws and Authentication Flaws</p>
+<p><strong>OWASP</strong> testing methodology</p>
+<p><strong>Certs:</strong> GWAPT, OSCP, OSCE, GPEN</p>
+<h3 id="terms-from-lethal-skills-site">Terms From Lethal Skills site:</h3>
+<p>deserialization, node vulnerabilities, template injection</p>
+<h3 id="terms-from-the-hacker-playbook-3">Terms From The Hacker Playbook 3:</h3>
+<p>DNS sinkhole, Time To Detect (TTD), Time To Mitigate (TTM), Tactics Techniques and Procedures (TTPs), Domain Admin (DA), Domain Controller (DC), stegonagraphy, Advanced Persistent Threat (APT), <a href="https://attack.mitre.org/">Mitre Att&amp;ck matrix</a></p>
+<p><a href="http://pentest-standard.org">Penetration Testing Execution Standard</a></p>
+<p>Study the specific tools and techniques (TTPs) of APTs <a href="https://docs.google.com/spreadsheets/d/1H9_xaxQHpWaa4O_Son4Gx0YOIzlcBWMsdvePFX68EKU/htmlview?usp=gmail#">here</a>. Additional TTPs can be found in the Google sheet as <a href="https://attack.mitre.org/groups/G0006/">links</a> to Mitre references for each APT.</p>
+<p>Commercial Off The Shelf (COTS) offensive tools: Metasploit, Cobalt Strike, DNS Cat</p>
+<h3 id="terms-from-other">Terms from Other:</h3>
+<ul>
+<li>Remote Access Trojan (RAT)</li>
+<li>CIA triad (confidentiality, integrity and availability)</li>
+</ul>
+<p>This is obviously a work in progress, stay tuned!</p></div>
 
   
   
