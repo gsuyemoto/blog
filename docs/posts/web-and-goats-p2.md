@@ -51,3 +51,6 @@ GET http://localhost:8080/WebGoat/IDOR/profile/userid HTTP/1.1
 With *userid* being your profile id number ascertained in previous challenges. Using ZAP, I decided that I would just fuzz around my profile id (before and after) and see if another user's profile came up:
 
 ![type:video](videos/fuzzing-other-users-profile.webm)
+
+!!! note
+    The fuzzing capability provided in ZAP is pretty cool, but it doesn't seem to provide you with a way to script it to stop on a desired response from the server you are fuzzing.
