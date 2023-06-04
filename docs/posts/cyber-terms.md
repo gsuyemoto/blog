@@ -10,6 +10,11 @@ date: 2023-06-03
 
 Today, we are going to explore the world of cybersecurity terminology. To start off, we are going to see what ChatGPT has to say on the subject, and then later provide our own terms and definitions. So, let's begin with ChatGPT:
 
+My query was something like:
+````
+List some cybersecurity jargon and their definitions
+````
+
 <!-- more -->
 
 Logging into ChatGPT, I then queried it for cybersecurity jargon and here were the results:
@@ -46,9 +51,12 @@ Logging into ChatGPT, I then queried it for cybersecurity jargon and here were t
 > 
 > 15. Ransomware: A type of malicious software that encrypts a victim's files or locks their system, demanding a ransom payment in exchange for restoring access.
  
-Ha! Not that impressive. I mean, they ARE cybersecurity terminololgy, but very basic and very general. Probably great for a someone who doesn't have much knowledge of cybersecurity I guess. I'm pretty sure throwing these out won't impress too many people in an interview though.
+Ha! OK, a bit more general than I was hoping for, but that's my fault. Bad query. I mean, they ARE cybersecurity terms, but a bit too basic. Let's maybe try to get more specific. Maybe even hope to dig a bit deeper to unearth some really esoteric terminology.
 
-Ok, I'm sure these results are just an indication of my bad query. Let's try another query, and let's be more specific:
+Here's another try, I think my query was something like:
+````
+Tell me about vulnerabilities to be aware of as a web server operator
+````
 
 > As a web server operator, it is important to be aware of various cybersecurity vulnerabilities that can affect your web server. Here are some specific vulnerabilities to consider:
 > 
