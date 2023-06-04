@@ -1,14 +1,14 @@
 ---
-title: Cybersecurity Jargon
-slug: cybersecurity-jargon
+title: Cybersecurity Terms
+slug: cybersecurity-terms
 date: 2023-06-03
 ---
   [prompt engineer]: https://www.axios.com/2023/02/22/chatgpt-prompt-engineers-ai-job
   [Black Lantern]: https://www.blacklanternsecurity.com/careers.html
 
-# Cybersecurity Jargon
+# Cybersecurity Terms
 
-I just recently spoke to a pleasant tech recruiter and in the conversation she mentioned that I should take the opportunity to express any tech jargon that I would know related to the position I was interested in. This, I thought, was an interesting opportunity to see what ChatGPT had to say about this...
+Today, we are going to explore the world of cybersecurity terminology. To start off, we are going to see what ChatGPT has to say on the subject, and then later provide our own terms and definitions. So, let's begin with ChatGPT:
 
 <!-- more -->
 
