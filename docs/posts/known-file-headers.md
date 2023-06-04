@@ -6,7 +6,7 @@ date: 2023-06-04
 
   [extensive list]: https://en.wikipedia.org/wiki/List_of_file_signatures
 
-### Known File Headers in Hexadecimal
+# Known File Headers in Hexadecimal
 
 For some common files...
 
