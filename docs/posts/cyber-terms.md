@@ -5,6 +5,8 @@ date: 2023-06-03
 ---
   [prompt engineer]: https://www.axios.com/2023/02/22/chatgpt-prompt-engineers-ai-job
   [Black Lantern]: https://www.blacklanternsecurity.com/careers.html
+  [Cyderes]: https://www.cyderes.com/
+  [MITRE ATT&CK]: https://attack.mitre.org/
 
 # Cybersecurity Terms
 
@@ -92,13 +94,41 @@ As gleaned from various sources
 
 ### Terms From Job Postings
 
-Thanks to [Black Lantern].
+!!! info
+    Thanks to [Black Lantern]:
 
-**Knowledge of:** XSS, XXE, SQL Injection, Deserialization Attacks, File Inclusion/Path Traversal Attacks, Server-side Request Forgery, Remote Execution Flaws, Server Configuration Flaws and Authentication Flaws
+````title='Terms'
+* XSS, XXE, SQL Injection
+* Deserialization Attacks
+* File Inclusion/Path Traversal Attacks
+* Server-side Request Forgery
+* Remote Execution Flaws
+* Server Configuration Flaws and Authentication Flaws
+* OWASP testing methodology
+````
 
-**OWASP** testing methodology
+````title='Certs'
+* GWAPT
+* OSCP
+* OSCE
+* GPEN
+````
 
-**Certs:** GWAPT, OSCP, OSCE, GPEN
+!!! info
+    Thanks to [Cyderes]:
+
+````title='Terms'
+* SIEM platform (Sentinel, Splunk, Elastic, IBM Qradar, Chronicle...)
+* SOAR platform such as Siemplify, Forti soar etc.
+* [MITRE ATT&CK] framework
+````
+
+````title='Certs'
+* Sec+
+* CEH
+* SANS Certification (e.g. GCIH, GCIA, GSEC, GMON)
+* OSCP
+````
 
 ### Terms From Lethal Skills site:
 
