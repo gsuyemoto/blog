@@ -74,7 +74,7 @@ Ok, I'm sure these results are just an indication of my bad query. Let's try ano
 > 
 > Regularly updating and patching software, conducting security assessments, and following security best practices are crucial to minimize these vulnerabilities and maintain the security of your web server.
 
- Much, much better. Still, a bit lacking. I think the best results will probably be related to some pretty specific querying. Or, very specific topics added into the query. Obviously, my ChatGPT skills need improvement, maybe everyone can benefit from brushing up on their '[prompt engineer]{target=_blank}' skills??
+ Much, much better. Still, a bit lacking. I think the best results will probably be related to some pretty specific querying. Or, very specific topics added into the query. Obviously, my ChatGPT skills need improvement. Maybe everyone can benefit from brushing up on their '[prompt engineer]{target=_blank}' skills??
 
 The last result, number 10, was interesting as it definitely is jargon. I think many people might be aware of this type of vulnerability, but would not be familiar with the term or associate the term with the vulnerability.
 
@@ -111,4 +111,9 @@ Commercial Off The Shelf (COTS) offensive tools: Metasploit, Cobalt Strike, DNS 
 - Remote Access Trojan (RAT)
 - CIA triad (confidentiality, integrity and availability)
 
+
+### Summary
+
+I think jargon definitely has it's place. Sort of short code or a 'domain specific language.' It helps if everyone is familiar with a set of lingo that provides a 'shortcut' to communicate with each other. After taking a look at some of the terms I found in other sources, I definitely could benefit from collecting more terms.
+ 
 This is obviously a work in progress, stay tuned!
