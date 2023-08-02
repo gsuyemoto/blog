@@ -54,3 +54,27 @@ Some gotchas I found recently:
 * When debugging with console.log you will find that the log output will only show when it's used in the content scripts context. When attempting to use the console.log in a background or popup script, you can only view the corresponding log entry when inspecting popup (right click on the popup and click "inspect") or in the case of the background script you can find the extension ID and go to chrome-extension://extension-id/manifest.json. For more info, go to this link for [debugging Chrome extensions].
 * You can debug with alert messages via background and popup scripts as the alert is not part of the DOM which you do not have access to with the background and popup scripts.
 * You need the tab id when injecting content scripts from a background script (or script of similar context) after manifest V3 as the getCurrentTab.executeScript is deprecated. And, in order to get the tab id, I found the best way is to use the 'tab.query' for the 'active: true' tab to be the best way to do so.
+* When injecting a content script that will call the wasm object, you will probably need to use the 'files' key and pass an array of scripts which includes the wasm scaffolding script created with wasm-bindgen or wasm-pack:
+````javascript
+try {
+  await chrome.scripting.executeScript({
+    target: {
+      tabId: tabID,
+    },
+    files: ["wasm_scaffold.js","run_wasm.js"]
+  })
+}
+````
+Whereas the run_wasm.js is a simple script like:
+````javascript
+const runtime = chrome.runtime || browser.runtime;
+
+async function run() {
+  await wasm_bindgen(runtime.getURL('wasm_bg.wasm'));
+  // if the rust wasm code does not include a #[wasm_bindgen(start)] then you will need to call a function like:
+  // wasm_bindgen.start();
+}
+
+run();
+````
+
