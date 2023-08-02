@@ -2,6 +2,7 @@
 title: noisy drone in my office?
 slug: it-hums-it-roars
 date: 2023-05-25
+draft: true
 categories:
   - ProxMox
   - Bare Metal Virtual
