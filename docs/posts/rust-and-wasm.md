@@ -4,6 +4,7 @@ slug: rust-and-wasm
 date: 2023-07-27
 draft: true
 categories:
+  - Rust
   - WASM
   - Web Dev
 ---
