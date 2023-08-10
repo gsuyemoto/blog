@@ -9,6 +9,7 @@ categories:
 
   [virtualenvwrapper]: https://virtualenvwrapper.readthedocs.io/en/latest/install.html
   [Material for Mkdocs]: https://squidfunk.github.io/mkdocs-material/
+  [could not find virtualenv]: https://stackoverflow.com/questions/31274642/error-virtualenvwrapper-could-not-find-virtualenv-in-your-path
 
 # Python and Virtual Environments
 Setting up virtual environments, which is a necessity with Python has always been a pain in my
@@ -31,6 +32,8 @@ export PROJECT_HOME=$HOME/.virtualenvs_projects
 export VIRTUALENVWRAPPER_VIRTUALENV=/home/user/.local/bin/virtualenv
 source /home/user/local/bin/virtualenvwrapper.sh
 ````
+!!! note
+	The VIRTUALENVWRAPPER_VIRTUALENV export was needed to when encountering [could not find virtualenv] error.
 ````bash title="Create mkdocs material enviroment"
 source /home/user/.bashrc
 mkvirtualenv blog
