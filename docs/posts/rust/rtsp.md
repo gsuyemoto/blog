@@ -10,8 +10,13 @@ categories:
 ---
 
   [rtp protocol spec]: https://www.rfc-editor.org/rfc/rfc3550
-  [rtp h264 payload spec]: https://www.rfc-editor.org/rfc/rfc6184#page-10
+  [rtp h264 payload spec]: https://www.rfc-editor.org/rfc/rfc6184
   [rtp protocol spec wiki]: https://en.wikipedia.org/wiki/Real-time_Transport_Protocol
+  [NAL (Network Abstraction Layer)]: https://en.wikipedia.org//wiki/Network_Abstraction_Layer
+  [NAL Types]: https://yumichan.net/video-processing/video-compression/introduction-to-h264-nal-unit/
+  [non-interleaved mode]: https://www.rfc-editor.org/rfc/rfc6184#section-6.3
+  [rtp h264 payload spec section 7.1]: https://www.rfc-editor.org/rfc/rfc6184#section-7.1
+  [rtp h264 payload spec section 5.4]: https://www.rfc-editor.org/rfc/rfc6184#section-5.4
 
 # Implementing RTSP from scratch using Rust
 Looking into streaming video from a cheap camera I bought off of Amazon (a Topodoome, maybe model TD-J10A?). Anyways, after trying all of the current crates for Rust to get a simple RTSP connection ended in failure...
@@ -49,7 +54,7 @@ Within the 12 byte required header, there is a 4 bit CC flag which indicates if 
 
 More to come... 
 
-When receiving the RTP packets, the codec provided in the SDP after the **Describe** command is sent, will determine how you handle the payload. With my test camera, I was informed by the camera RTP server that the RTP packets would enclose H264 encoded data. Using this information and also the 'packetization-mode=1' also provided in the SDP informed how I would proceed in decoding and displaying the video stream. In section 5.6 of the [rtp h264 payload spec], the 'Single NAL packet' type of transport is what I need (as the 'packetization-mode=1' denotes that each RTP packet will have exactly 1 NAL unit in it's payload. There are 3 modes for the 'packetization-mode' key:
+When receiving the RTP packets, the codec provided in the SDP after the **Describe** command is sent, will determine how you handle the payload. With my test camera, I was informed by the camera RTP server that the RTP packets would enclose H264 encoded data. Using this information and also the 'packetization-mode=1' which means [non-interleaved mode] also provided in the SDP informed how I would proceed in decoding and displaying the video stream. Here are the 3 types of 'packetization-mode' keys:
 
 packetization-mode=0: This is the Non-Interleaved Mode where only one slice of encoded video data is put into each RTP packet. This mode is primarily used for backwards compatibility with older systems.
 
@@ -75,7 +80,10 @@ Here is a NAL unit data scheme from the spec:
 	Informative note: The first byte of a NAL unit co-serves as the
       	RTP payload header.
 
-In section 7.1 of the [rtp h264 payload spec], the spec provides how to de-packetize the RTP and subsequently the NAL unit. According to the spec, after de-packetization, the NAL unit is passed directly to the decoder.
+In section 7.1 of the [rtp h264 payload spec section 7.1], the spec provides how to de-packetize the RTP and subsequently the NAL unit. According to the spec, after de-packetization, the NAL unit is passed directly to the decoder.
 
 In section 8.2 of the [rtp h264 payload spec], the parameters for SDP as pertaining to the H264 video codec are outlined.
 
+After some investigation using a program I wrote in Rust to capture IP camera streams, I was able to determine that the packets sent using the test camera were using NAL type 28 which is determined from the NAL unit header (the first byte), see [rtp h264 payload spec section 5.4] for NAL unit types, and which is designated as type FU-A, which are fragments.
+
+NAL type unit FU-A packets can be empty. In order to decode, I will need to check for empty FU packets and discard if found.
