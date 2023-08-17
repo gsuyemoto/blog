@@ -9,6 +9,10 @@ categories:
   - Video
 ---
 
+  [rtp protocol spec]: https://www.rfc-editor.org/rfc/rfc3550
+  [rtp h264 payload spec]: https://www.rfc-editor.org/rfc/rfc6184#page-10
+  [rtp protocol spec wiki]: https://en.wikipedia.org/wiki/Real-time_Transport_Protocol
+
 # Implementing RTSP from scratch using Rust
 Looking into streaming video from a cheap camera I bought off of Amazon (a Topodoome, maybe model TD-J10A?). Anyways, after trying all of the current crates for Rust to get a simple RTSP connection ended in failure...
 
@@ -44,3 +48,34 @@ On to 'ac-ffmpeg' crate. This seem to be something that was simpler to set up a 
 Within the 12 byte required header, there is a 4 bit CC flag which indicates if there are additional CSRC headers. Each additional CSRC header would be 4 bytes and so if the CC flag indicates that there are 2 addtional CSRC headers, then you would be sent 4x2 additional header information in the packet. After the header info is the payload. In my basic testing with the Topodome camera and using Wireshark, I was able to see that all of the UDP packets received via RTP were only 12 bytes in length.
 
 More to come... 
+
+When receiving the RTP packets, the codec provided in the SDP after the **Describe** command is sent, will determine how you handle the payload. With my test camera, I was informed by the camera RTP server that the RTP packets would enclose H264 encoded data. Using this information and also the 'packetization-mode=1' also provided in the SDP informed how I would proceed in decoding and displaying the video stream. In section 5.6 of the [rtp h264 payload spec], the 'Single NAL packet' type of transport is what I need (as the 'packetization-mode=1' denotes that each RTP packet will have exactly 1 NAL unit in it's payload. There are 3 modes for the 'packetization-mode' key:
+
+packetization-mode=0: This is the Non-Interleaved Mode where only one slice of encoded video data is put into each RTP packet. This mode is primarily used for backwards compatibility with older systems.
+
+packetization-mode=1: This is the Single NAL Unit Mode. In this mode, each RTP packet contains a full NAL unit, but unlike mode 0, it allows for more modern H.264 features like Constrained Baseline Profile and others. It's the most common mode used in many applications and systems today.
+
+packetization-mode=2: This is the Interleaved Mode. In this mode, a single NAL unit can be split over multiple RTP packets. This mode is rarely used in practice.
+
+Here is a NAL unit data scheme from the spec:
+
+     0                   1                   2                   3
+     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |F|NRI|  Type   |                                               |
+    +-+-+-+-+-+-+-+-+                                               |
+    |                                                               |
+    |               Bytes 2..n of a single NAL unit                 |
+    |                                                               |
+    |                               +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |                               :...OPTIONAL RTP padding        |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+!!! Note
+	Informative note: The first byte of a NAL unit co-serves as the
+      	RTP payload header.
+
+In section 7.1 of the [rtp h264 payload spec], the spec provides how to de-packetize the RTP and subsequently the NAL unit. According to the spec, after de-packetization, the NAL unit is passed directly to the decoder.
+
+In section 8.2 of the [rtp h264 payload spec], the parameters for SDP as pertaining to the H264 video codec are outlined.
+
