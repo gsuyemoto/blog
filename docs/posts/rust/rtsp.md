@@ -17,6 +17,9 @@ categories:
   [non-interleaved mode]: https://www.rfc-editor.org/rfc/rfc6184#section-6.3
   [rtp h264 payload spec section 7.1]: https://www.rfc-editor.org/rfc/rfc6184#section-7.1
   [rtp h264 payload spec section 5.4]: https://www.rfc-editor.org/rfc/rfc6184#section-5.4
+  [RFC 6184 section 5.8]: https://www.rfc-editor.org/rfc/rfc6184#section-5.8
+  [OpenH264 doesn't support yuvj420p]: https://github.com/cisco/openh264/issues/3511
+  [ITU H.264 specification]: https://www.itu.int/rec/T-REC-H.264
 
 # Implementing RTSP from scratch using Rust
 Looking into streaming video from a cheap camera I bought off of Amazon (a Topodoome, maybe model TD-J10A?). Anyways, after trying all of the current crates for Rust to get a simple RTSP connection ended in failure...
@@ -86,4 +89,64 @@ In section 8.2 of the [rtp h264 payload spec], the parameters for SDP as pertain
 
 After some investigation using a program I wrote in Rust to capture IP camera streams, I was able to determine that the packets sent using the test camera were using NAL type 28 which is determined from the NAL unit header (the first byte), see [rtp h264 payload spec section 5.4] for NAL unit types, and which is designated as type FU-A, which are fragments.
 
-NAL type unit FU-A packets can be empty. In order to decode, I will need to check for empty FU packets and discard if found.
+NAL type unit FU-A packets can be empty. In order to decode, I will need to check for empty FU packets and discard if found. FU packets consist of the following:
+
+     0                   1                   2                   3
+     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    | FU indicator  |   FU header   |                               |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               |
+    |                                                               |
+    |                         FU payload                            |
+    |                                                               |
+    |                               +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |                               :...OPTIONAL RTP padding        |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+Which is found in [RFC 6184 section 5.8].
+
+The FU header has the following format:
+
+      +---------------+
+      |0|1|2|3|4|5|6|7|
+      +-+-+-+-+-+-+-+-+
+      |S|E|R|  Type   |
+      +---------------+
+
+   S:     1 bit
+          When set to one, the Start bit indicates the start of a
+          fragmented NAL unit.  When the following FU payload is not the
+          start of a fragmented NAL unit payload, the Start bit is set
+          to zero.
+
+
+
+
+
+Wang, et al.                 Standards Track                   [Page 31]
+
+RFC 6184           RTP Payload Format for H.264 Video           May 2011
+
+
+   E:     1 bit
+          When set to one, the End bit indicates the end of a fragmented
+          NAL unit, i.e., the last byte of the payload is also the last
+          byte of the fragmented NAL unit.  When the following FU
+          payload is not the last fragment of a fragmented NAL unit, the
+          End bit is set to zero.
+
+   R:     1 bit
+          The Reserved bit MUST be equal to 0 and MUST be ignored by the
+          receiver.
+
+   Type:  5 bits
+
+!!! Note
+	The NAL Unit Type values are the same as those found in the regular NAL unit headers. 
+
+OpenH264 from Cisco follows the Annex B bytestream format as reference at [ITU H.264 specification]. This is for encoding and decoding. When receiving the RTP packets from the camera server, each packet is it's only delineation for all H264 NAL units (which are the basic building blocks for the H264 stream). So, when taking these RTP packets and then attempting to feed the subsequent NAL units to the OpenH264 decoder, you need to preprocess the NALUs (NAL Units). Preprocessing the NALUs is actually fairly involved, for instance because of having to gather fragments (e.g. FU-A) and adding the NALUs delineators called start code prefixes (3 or 4 byte sequence of bytes, either 0x00 0x00 0x01 or 0x00 0x00 0x00 0x01). 
+
+Start code prefixes: With start code prefixes, it depends on whether you are dealing with SPS/PPS packets. For SPS (NAL type 7) and PPS packets (NAL type 8), the prefix will be a 4 byte (0x00 0x00 0x00 0x01) start code and for all other NALUs the prefix start codes will be 3 bytes (0x00 0x00 0x01). As far as I can tell, the start of the entire bytestream will be a 4 byte prefix code, which I would think in almost every case would be a SPS unit anyways...
+
+VCL and non-VCL: VCL units contain image data and non-VCL units contain metadata usually for the entire stream or in the case of AUD units are just another form of NALUs delineators.
+
