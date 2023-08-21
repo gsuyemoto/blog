@@ -22,6 +22,10 @@ categories:
   [ITU H.264 specification]: https://www.itu.int/rec/T-REC-H.264
   [Great reference on H264 and NALUs]: https://doc-kurento.readthedocs.io/en/latest/knowledge/h264.html#nal-units-nalu
   [ffprobe]: https://ffmpeg.org/ffprobe.html
+  [Parser for H264 in Rust]: https://docs.rs/h264-reader/0.7.0/h264_reader/index.html
+  [Parser for H264 in C]: https://gstreamer.freedesktop.org/documentation/gst-plugins-bad-codecparsers/gsth264parser.html?gi-language=c
+  [OpenH264 for Rust on Github]: https://github.com/ralfbiedert/openh264-rs/tree/5fde2d014b91079c0d5fd0899dae06d6a62975a1
+  [OpenH264 Official Cisco Github]: https://github.com/cisco/openh264/tree/986606644aca8f795fc04f76dcc758d88378e4a0
 
 # Implementing RTSP from scratch using Rust
 Looking into streaming video from a cheap camera I bought off of Amazon (a Topodoome, maybe model TD-J10A?). Anyways, after trying all of the current crates for Rust to get a simple RTSP connection ended in failure...
