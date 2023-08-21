@@ -20,6 +20,8 @@ categories:
   [RFC 6184 section 5.8]: https://www.rfc-editor.org/rfc/rfc6184#section-5.8
   [OpenH264 doesn't support yuvj420p]: https://github.com/cisco/openh264/issues/3511
   [ITU H.264 specification]: https://www.itu.int/rec/T-REC-H.264
+  [Great reference on H264 and NALUs]: https://doc-kurento.readthedocs.io/en/latest/knowledge/h264.html#nal-units-nalu
+  [ffprobe]: https://ffmpeg.org/ffprobe.html
 
 # Implementing RTSP from scratch using Rust
 Looking into streaming video from a cheap camera I bought off of Amazon (a Topodoome, maybe model TD-J10A?). Anyways, after trying all of the current crates for Rust to get a simple RTSP connection ended in failure...
@@ -149,4 +151,11 @@ OpenH264 from Cisco follows the Annex B bytestream format as reference at [ITU H
 Start code prefixes: With start code prefixes, it depends on whether you are dealing with SPS/PPS packets. For SPS (NAL type 7) and PPS packets (NAL type 8), the prefix will be a 4 byte (0x00 0x00 0x00 0x01) start code and for all other NALUs the prefix start codes will be 3 bytes (0x00 0x00 0x01). As far as I can tell, the start of the entire bytestream will be a 4 byte prefix code, which I would think in almost every case would be a SPS unit anyways...
 
 VCL and non-VCL: VCL units contain image data and non-VCL units contain metadata usually for the entire stream or in the case of AUD units are just another form of NALUs delineators.
+
+So, a fantastic tool to debug is by using the 'ffprobe' command provided when installing ffmpeg. This will give you invaluable information and insight into a video stream:
+
+``` bash
+ffprobe -i test_file.h264 -loglevel debug -show_frames -show_entries frame=key_frame,pkt_pts_time,pkt_dts_time,pkt_size
+```
+
 
