@@ -15,7 +15,7 @@ theme:
   font:
     text: Roboto
 plugins:
-  - meta
+  # - meta
   - blog:
       blog_dir: . 
       post_readtime: false
